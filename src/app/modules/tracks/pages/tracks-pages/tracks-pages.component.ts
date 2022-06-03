@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TrackModel } from '@core/models/tracks.models';
+import * as dataRaw from '../../../../data/tracks.json'
 
 @Component({
   selector: 'app-tracks-pages',
@@ -7,21 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TracksPagesComponent implements OnInit {
 
-  mockTrackList = [
-    {
-      name: 'Isa'
-    },
-    {
-      name: 'Isa'
-    },
-    {
-      name: 'Isa'
-    },
-  ];
+  mockTrackList: Array<TrackModel> = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    const {data}:any = (dataRaw as any).default
+    this.mockTrackList = data;
   }
 
 }
